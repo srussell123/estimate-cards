@@ -11,6 +11,8 @@
 
 @interface ECBigCardViewController ()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *gestureRecognizer;
+
 @end
 
 @implementation ECBigCardViewController
@@ -21,6 +23,10 @@
     
     UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
+    
+    self.gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    
+    [self.collectionView addGestureRecognizer:self.gestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,6 +39,13 @@
     [super viewWillAppear:animated];
     
     [self.collectionView scrollToItemAtIndexPath:self.pathToView atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+}
+
+#pragma mark - Gesture Handler
+-(void)handleGesture:(UISwipeGestureRecognizer*)recognizer{
+    if (recognizer.state == UIGestureRecognizerStateEnded && recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
