@@ -9,6 +9,8 @@
 #import "ECDeckViewController.h"
 #import "ECCardCell.h"
 
+#import "ECBigCardViewController.h"
+
 @interface ECDeckViewController ()
 
 @property (nonatomic, strong) NSArray *cards;
@@ -63,6 +65,13 @@
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"User tapped card %@", self.cards[indexPath.item]);
+    
+    ECBigCardViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BigCardViewController"];
+    
+    vc.cards = self.cards;
+    vc.pathToView = indexPath;
+    
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
