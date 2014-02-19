@@ -19,7 +19,7 @@
 		2D71A2EC18AE6052006D161B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D71A2D418AE6052006D161B /* UIKit.framework */; };
 		2D71A2F418AE6052006D161B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D71A2F218AE6052006D161B /* InfoPlist.strings */; };
 		2D71A2F618AE6052006D161B /* Estimate_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A2F518AE6052006D161B /* Estimate_CardsTests.m */; };
-		2DC867B218B442ED008002FD /* ECZoomInTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC867B118B442ED008002FD /* ECZoomInTransition.m */; };
+		2DC867B218B442ED008002FD /* ECZoomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC867B118B442ED008002FD /* ECZoomTransition.m */; };
 		2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400118B32574009A6D72 /* ECDeckViewController.m */; };
 		2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400618B32A8F009A6D72 /* ECCardCell.m */; };
 		2DCE400918B32AB9009A6D72 /* ECCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCE400818B32AB9009A6D72 /* ECCardCell.xib */; };
@@ -54,8 +54,8 @@
 		2D71A2F118AE6052006D161B /* Estimate CardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Estimate CardsTests-Info.plist"; sourceTree = "<group>"; };
 		2D71A2F318AE6052006D161B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D71A2F518AE6052006D161B /* Estimate_CardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Estimate_CardsTests.m; sourceTree = "<group>"; };
-		2DC867B018B442ED008002FD /* ECZoomInTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECZoomInTransition.h; sourceTree = "<group>"; };
-		2DC867B118B442ED008002FD /* ECZoomInTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECZoomInTransition.m; sourceTree = "<group>"; };
+		2DC867B018B442ED008002FD /* ECZoomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECZoomTransition.h; sourceTree = "<group>"; };
+		2DC867B118B442ED008002FD /* ECZoomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECZoomTransition.m; sourceTree = "<group>"; };
 		2DCE400018B32574009A6D72 /* ECDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDeckViewController.h; sourceTree = "<group>"; };
 		2DCE400118B32574009A6D72 /* ECDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckViewController.m; sourceTree = "<group>"; };
 		2DCE400518B32A8F009A6D72 /* ECCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCardCell.h; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 		2DC867AF18B442C1008002FD /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
-				2DC867B018B442ED008002FD /* ECZoomInTransition.h */,
-				2DC867B118B442ED008002FD /* ECZoomInTransition.m */,
+				2DC867B018B442ED008002FD /* ECZoomTransition.h */,
+				2DC867B118B442ED008002FD /* ECZoomTransition.m */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 				2DEBF78418B33D0F0020B170 /* ECBigCardViewController.m in Sources */,
 				2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */,
 				2D71A2DD18AE6052006D161B /* main.m in Sources */,
-				2DC867B218B442ED008002FD /* ECZoomInTransition.m in Sources */,
+				2DC867B218B442ED008002FD /* ECZoomTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

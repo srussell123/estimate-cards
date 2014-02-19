@@ -14,7 +14,7 @@
 #import "ECCardCell.h"
 
 //animations
-#import "ECZoomInTransition.h"
+#import "ECZoomTransition.h"
 
 @interface ECDeckViewController ()  <UIViewControllerTransitioningDelegate>
 
@@ -95,7 +95,7 @@
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source{
-    return [[ECZoomInTransition alloc] init];
+    return [[ECZoomTransition alloc] initWithZoomMode:ECZoomModeIn];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
