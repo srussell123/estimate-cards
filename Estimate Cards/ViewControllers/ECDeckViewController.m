@@ -6,12 +6,17 @@
 //  Copyright (c) 2014 shadyproject. All rights reserved.
 //
 
+//view controllers
 #import "ECDeckViewController.h"
-#import "ECCardCell.h"
-
 #import "ECBigCardViewController.h"
 
-@interface ECDeckViewController ()
+//cells
+#import "ECCardCell.h"
+
+//animations
+#import "ECZoomTransition.h"
+
+@interface ECDeckViewController ()  <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) NSArray *cards;
 
@@ -68,6 +73,7 @@
     
     ECBigCardViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BigCardViewController"];
     
+    vc.transitioningDelegate = self;
     vc.cards = self.cards;
     vc.pathToView = indexPath;
     
@@ -75,12 +81,24 @@
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
+ sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(150, 266.5);
 }
 
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
+       insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(5.0, 5.0, 1.0, 5.0);
 }
 
+#pragma mark - UIViewControllerTransitioningDelegate
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source{
+    return [[ECZoomTransition alloc] init];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return nil; //no custom dismissal yet
+}
 @end

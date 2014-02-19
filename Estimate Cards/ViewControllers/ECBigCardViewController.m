@@ -17,6 +17,17 @@
 
 @implementation ECBigCardViewController
 
+
+-(instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout{
+    self = [super initWithCollectionViewLayout:layout];
+    
+    if (self) {
+        self.modalPresentationStyle = UIModalPresentationCustom;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
