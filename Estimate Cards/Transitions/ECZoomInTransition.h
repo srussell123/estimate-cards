@@ -1,5 +1,5 @@
 //
-//  ECZoomTransition.h
+//  ECZoomInTransition.h
 //  Estimate Cards
 //
 //  Created by Christopher Martin on 2/18/14.
@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ECZoomTransition : NSObject <UIViewControllerAnimatedTransitioning>
+@interface ECZoomInTransition : NSObject <UIViewControllerAnimatedTransitioning>
 
+    
 @end
