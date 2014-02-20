@@ -41,6 +41,16 @@
     [self.collectionView scrollToItemAtIndexPath:self.pathToView atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self becomeFirstResponder];
+}
+
+-(BOOL)canBecomeFirstResponder{
+    return YES;
+}
+
+
 #pragma mark - Gesture Handler
 -(void)handleGesture:(UISwipeGestureRecognizer*)recognizer{
     if (recognizer.state == UIGestureRecognizerStateEnded && recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
@@ -78,5 +88,15 @@
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(5.0, 5.0, 1.0, 5.0);
+}
+
+#pragma mark - Motion Stuff
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (motion == UIEventSubtypeMotionShake) {
+        NSUInteger randomItem = arc4random_uniform(self.cards.count);
+        NSIndexPath *path = [NSIndexPath indexPathForItem:randomItem inSection:0];
+        
+        [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    }
 }
 @end
