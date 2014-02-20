@@ -44,6 +44,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)showBigCardViewForItemAtIndexPath:(NSIndexPath*)indexPath {
+    ECBigCardViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BigCardViewController"];
+    
+    vc.cards = self.cards;
+    vc.pathToView = indexPath;
+    
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -66,12 +75,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"User tapped card %@", self.cards[indexPath.item]);
     
-    ECBigCardViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BigCardViewController"];
-    
-    vc.cards = self.cards;
-    vc.pathToView = indexPath;
-    
-    [self presentViewController:vc animated:YES completion:nil];
+    [self showBigCardViewForItemAtIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -83,4 +87,13 @@
     return UIEdgeInsetsMake(5.0, 5.0, 1.0, 5.0);
 }
 
+#pragma mark - Motion Detection
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (motion == UIEventSubtypeMotionShake) {
+        NSUInteger randomIndex = arc4random_uniform(self.cards.count);
+        NSIndexPath *path = [NSIndexPath indexPathForItem:randomIndex inSection:0];
+        
+        [self showBigCardViewForItemAtIndexPath:path];
+    }
+}
 @end
