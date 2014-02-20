@@ -19,6 +19,7 @@
 @interface ECDeckViewController ()  <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) NSArray *cards;
+@property (nonatomic, assign) CGPoint lastTouchLocation;
 
 @end
 
@@ -95,10 +96,17 @@
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source{
-    return [[ECZoomTransition alloc] initWithZoomMode:ECZoomModeIn];
+    
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[self.collectionView indexPathForItemAtPoint:self.lastTouchLocation]];
+    return [[ECZoomTransition alloc] initWithZoomMode:ECZoomModeIn startRect:[cell frame]];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
     return nil; //no custom dismissal yet
+}
+
+#pragma mark - Touch Stuff
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    self.lastTouchLocation = [[touches anyObject] locationInView:self.view];
 }
 @end

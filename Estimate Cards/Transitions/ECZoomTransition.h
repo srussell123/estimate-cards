@@ -15,6 +15,6 @@ typedef NS_ENUM(NSUInteger, ECZoomMode) {
 
 @interface ECZoomTransition : NSObject <UIViewControllerAnimatedTransitioning>
 
--(instancetype)initWithZoomMode:(ECZoomMode)zoomMode;
+-(instancetype)initWithZoomMode:(ECZoomMode)zoomMode startRect:(CGRect)startRect;
 
 @end
