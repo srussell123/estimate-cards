@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C877DE4B-2CB1-4570-AE46-9C32408A93B7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Estimate Cards</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4D5D6CED-779E-4F05-BD26-5C28D46C60E9</key>
+		<string>ssh://github.com/shadyproject/estimate-cards.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Estimate Cards.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4D5D6CED-779E-4F05-BD26-5C28D46C60E9</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/shadyproject/estimate-cards.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4D5D6CED-779E-4F05-BD26-5C28D46C60E9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4D5D6CED-779E-4F05-BD26-5C28D46C60E9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Estimate Cards</string>
+		</dict>
+	</array>
+</dict>
+</plist>
