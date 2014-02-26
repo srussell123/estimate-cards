@@ -6,15 +6,22 @@
 //  Copyright (c) 2014 shadyproject. All rights reserved.
 //
 
-#import "ECDeckViewController.h"
+//Cells and Xibs
 #import "ECCardCell.h"
 
+//View Controllers
+#import "ECDeckViewController.h"
 #import "ECBigCardViewController.h"
+
+//Menu and Transitions
+#import "UIViewController+ECSlidingViewController.h"
+#import "ECDynamicTransition.h"
 
 @interface ECDeckViewController ()
 
+@property (nonatomic, strong) ECDynamicTransition *transition;
 @property (nonatomic, strong) NSArray *cards;
-
+@property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
 @end
 
 @implementation ECDeckViewController
@@ -31,6 +38,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //configure the transition for swipe menu
+    self.transition = [[ECDynamicTransition alloc] init];
+    self.transition.slidingViewController = self.slidingViewController;
+    self.slidingViewController.delegate = self.transition;
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGestureCustom;
+    self.slidingViewController.customAnchoredGestures = @[self.dynamicTransitionPanGesture];
+    [self.view addGestureRecognizer:self.dynamicTransitionPanGesture];
     
     UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
@@ -95,5 +110,14 @@
         
         [self showBigCardViewForItemAtIndexPath:path];
     }
+}
+
+#pragma mark - Tranistion Stuff
+- (UIPanGestureRecognizer *)dynamicTransitionPanGesture {
+    if (_dynamicTransitionPanGesture) return _dynamicTransitionPanGesture;
+    
+    _dynamicTransitionPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.transition action:@selector(handlePanGesture:)];
+    
+    return _dynamicTransitionPanGesture;
 }
 @end
