@@ -38,9 +38,7 @@ const CGFloat kECZoomTransitionDuration = .75;
     UIViewController *to = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *from = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *container = [transitionContext containerView];
-  CGAffineTransform translate = CGAffineTransformMakeTranslation(-from.view.center.x, -from.view.center.y);
-  to.view.transform = translate;
-  
+    
     /*
     to.view.layer.borderWidth = 1.0;
     to.view.layer.borderColor = [[UIColor blueColor] CGColor];
@@ -49,6 +47,9 @@ const CGFloat kECZoomTransitionDuration = .75;
     from.view.layer.borderColor = [[UIColor redColor] CGColor];
     */
     
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(-from.view.center.x, -from.view.center.y);
+    to.view.transform = translate;
+   
     if (self.zoomMode == ECZoomModeOut) {
         [container insertSubview:to.view aboveSubview:from.view];
         [container addSubview:to.view];
@@ -68,8 +69,6 @@ const CGFloat kECZoomTransitionDuration = .75;
         if (self.zoomMode == ECZoomModeOut) {
           from.view.transform = CGAffineTransformMakeScale(0, 0);
         } else {
-          CGAffineTransform fromScale = CGAffineTransformMakeScale(.8, .8);
-          from.view.transform = fromScale;
           CGAffineTransform toScale = CGAffineTransformMakeScale(1., 1.);
           CGAffineTransform translate = CGAffineTransformMakeTranslation(container.frame.origin.x, container.frame.origin.y);
           CGAffineTransform combinedTransforms = CGAffineTransformConcat(toScale, translate);
