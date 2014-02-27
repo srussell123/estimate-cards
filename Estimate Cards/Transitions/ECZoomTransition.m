@@ -66,7 +66,7 @@ const CGFloat kECZoomTransitionDuration = .75;
     
     [UIView animateWithDuration:kECZoomTransitionDuration animations:^{
         if (self.zoomMode == ECZoomModeOut) {
-          // TODO: stuffs
+          from.view.transform = CGAffineTransformMakeScale(0, 0);
         } else {
           CGAffineTransform fromScale = CGAffineTransformMakeScale(.8, .8);
           from.view.transform = fromScale;
