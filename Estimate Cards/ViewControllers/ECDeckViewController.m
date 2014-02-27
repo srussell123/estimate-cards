@@ -19,11 +19,19 @@
 @interface ECDeckViewController ()  <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) NSArray *cards;
-@property (nonatomic, assign) CGPoint lastTouchLocation;
-
+@property (nonatomic) CGRect transitionStartRect;
 @end
 
 @implementation ECDeckViewController
+
+@synthesize transitionStartRect = _transitionStartRect;
+
+- (CGRect)transitionStartRect {
+  if (!_transitionStartRect.size.width || !_transitionStartRect.size.height) {
+    _transitionStartRect = CGRectMake(0, 0, 40, 40);
+  }
+  return _transitionStartRect;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,7 +79,11 @@
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"User tapped card %@", self.cards[indexPath.item]);
-    
+  
+  UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+  self.transitionStartRect = cell.frame;
+  
+  
     ECBigCardViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BigCardViewController"];
     
     vc.transitioningDelegate = self;
@@ -96,9 +108,9 @@
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source{
-    
-    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[self.collectionView indexPathForItemAtPoint:self.lastTouchLocation]];
-    return [[ECZoomTransition alloc] initWithZoomMode:ECZoomModeIn startRect:[cell frame]];
+  
+//    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:nil];
+    return [[ECZoomTransition alloc] initWithZoomMode:ECZoomModeIn startRect:self.transitionStartRect];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
@@ -106,7 +118,7 @@
 }
 
 #pragma mark - Touch Stuff
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    self.lastTouchLocation = [[touches anyObject] locationInView:self.view];
-}
+//-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+//    self.lastTouchLocation = [[touches anyObject] locationInView:self.view];
+//}
 @end

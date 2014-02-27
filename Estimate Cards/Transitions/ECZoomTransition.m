@@ -38,7 +38,9 @@ const CGFloat kECZoomTransitionDuration = .75;
     UIViewController *to = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *from = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *container = [transitionContext containerView];
-    
+  CGAffineTransform translate = CGAffineTransformMakeTranslation(-from.view.center.x, -from.view.center.y);
+  to.view.transform = translate;
+  
     /*
     to.view.layer.borderWidth = 1.0;
     to.view.layer.borderColor = [[UIColor blueColor] CGColor];
@@ -51,18 +53,35 @@ const CGFloat kECZoomTransitionDuration = .75;
         [container insertSubview:to.view aboveSubview:from.view];
         [container addSubview:to.view];
     } else {
-        //to.view.layer.anchorPoint = self.startRect.origin;
-        //to.view.frame = self.startRect;
-        to.view.transform = CGAffineTransformMakeScale(0, 0);
+      CGAffineTransform startScale = CGAffineTransformMakeScale(0.5, 0.5);
+      float originOffsetX = (self.startRect.origin.x + self.startRect.size.width/2) - container.center.x;
+      float originOffsetY = (self.startRect.origin.y + self.startRect.size.height/2) - container.center.y;
+      CGAffineTransform startTranslate = CGAffineTransformMakeTranslation(originOffsetX, originOffsetY);
+      CGAffineTransform startCombinedTransforms = CGAffineTransformConcat(startScale, startTranslate);
+      to.view.transform = startCombinedTransforms;
+      to.view.alpha = 0;
+
         [container addSubview:to.view];
     }
     
     [UIView animateWithDuration:kECZoomTransitionDuration animations:^{
         if (self.zoomMode == ECZoomModeOut) {
-            from.view.transform = CGAffineTransformMakeScale(0, 0);
+          // TODO: stuffs
         } else {
-            to.view.transform = CGAffineTransformIdentity;
-            //to.view.center = CGPointMake(to.view.frame.size.width/2.0, to.view.frame.size.height/2.0);
+          CGAffineTransform fromScale = CGAffineTransformMakeScale(.8, .8);
+          from.view.transform = fromScale;
+          CGAffineTransform toScale = CGAffineTransformMakeScale(1., 1.);
+          CGAffineTransform translate = CGAffineTransformMakeTranslation(container.frame.origin.x, container.frame.origin.y);
+          CGAffineTransform combinedTransforms = CGAffineTransformConcat(toScale, translate);
+          to.view.transform = combinedTransforms;
+          to.view.alpha = 1;
+          /*
+//          CGAffineTransform scale =
+//          to.view.transform = CGAffineTransformMakeTranslation(- from.view.frame.size.width/2., - from.view.frame.size.height/2.);
+////          to.view.transform = CGAffineTransformIdentity;
+//          to.view.center = container.center;
+//            //to.view.center = CGPointMake(to.view.frame.size.width/2.0, to.view.frame.size.height/2.0);
+           */
         }
         
     } completion:^(BOOL finished) {
