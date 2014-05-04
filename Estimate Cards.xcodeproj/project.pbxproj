@@ -19,11 +19,14 @@
 		2D71A2EC18AE6052006D161B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D71A2D418AE6052006D161B /* UIKit.framework */; };
 		2D71A2F418AE6052006D161B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D71A2F218AE6052006D161B /* InfoPlist.strings */; };
 		2D71A2F618AE6052006D161B /* Estimate_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A2F518AE6052006D161B /* Estimate_CardsTests.m */; };
+		2D87F4C818BDB66D0059932D /* ECDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D87F4C718BDB66D0059932D /* ECDynamicTransition.m */; };
+		2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */; };
 		2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400118B32574009A6D72 /* ECDeckViewController.m */; };
 		2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400618B32A8F009A6D72 /* ECCardCell.m */; };
 		2DCE400918B32AB9009A6D72 /* ECCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCE400818B32AB9009A6D72 /* ECCardCell.xib */; };
 		2DD15D0A18B31F55003B04E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD15D0918B31F55003B04E3 /* Main.storyboard */; };
 		2DEBF78418B33D0F0020B170 /* ECBigCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEBF78318B33D0F0020B170 /* ECBigCardViewController.m */; };
+		A4A7B30E20D74A108AC03E11 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CBCAD333C046DF9B888E74 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,10 @@
 		2D71A2F118AE6052006D161B /* Estimate CardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Estimate CardsTests-Info.plist"; sourceTree = "<group>"; };
 		2D71A2F318AE6052006D161B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D71A2F518AE6052006D161B /* Estimate_CardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Estimate_CardsTests.m; sourceTree = "<group>"; };
+		2D87F4C618BDB66D0059932D /* ECDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDynamicTransition.h; sourceTree = "<group>"; };
+		2D87F4C718BDB66D0059932D /* ECDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDynamicTransition.m; sourceTree = "<group>"; };
+		2D9D8AD718BC768D00E724E1 /* ECMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMenuViewController.h; sourceTree = "<group>"; };
+		2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMenuViewController.m; sourceTree = "<group>"; };
 		2DCE400018B32574009A6D72 /* ECDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDeckViewController.h; sourceTree = "<group>"; };
 		2DCE400118B32574009A6D72 /* ECDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckViewController.m; sourceTree = "<group>"; };
 		2DCE400518B32A8F009A6D72 /* ECCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCardCell.h; sourceTree = "<group>"; };
@@ -61,6 +68,8 @@
 		2DD15D0918B31F55003B04E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2DEBF78218B33D0F0020B170 /* ECBigCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECBigCardViewController.h; sourceTree = "<group>"; };
 		2DEBF78318B33D0F0020B170 /* ECBigCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBigCardViewController.m; sourceTree = "<group>"; };
+		C1CBCAD333C046DF9B888E74 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9337EEC73AA434E90171635 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +80,7 @@
 				2D71A2D318AE6052006D161B /* CoreGraphics.framework in Frameworks */,
 				2D71A2D518AE6052006D161B /* UIKit.framework in Frameworks */,
 				2D71A2D118AE6052006D161B /* Foundation.framework in Frameworks */,
+				A4A7B30E20D74A108AC03E11 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +104,7 @@
 				2D71A2EF18AE6052006D161B /* Estimate CardsTests */,
 				2D71A2CF18AE6052006D161B /* Frameworks */,
 				2D71A2CE18AE6052006D161B /* Products */,
+				E9337EEC73AA434E90171635 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +124,7 @@
 				2D71A2D218AE6052006D161B /* CoreGraphics.framework */,
 				2D71A2D418AE6052006D161B /* UIKit.framework */,
 				2D71A2E918AE6052006D161B /* XCTest.framework */,
+				C1CBCAD333C046DF9B888E74 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +132,7 @@
 		2D71A2D618AE6052006D161B /* Estimate Cards */ = {
 			isa = PBXGroup;
 			children = (
+				2D87F4C518BDB6450059932D /* Transitions */,
 				2DD15D0818B31F2F003B04E3 /* Categories */,
 				2DD15D0718B31EE1003B04E3 /* Views */,
 				2DD15D0618B31EDB003B04E3 /* View Controllers */,
@@ -161,6 +174,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2D87F4C518BDB6450059932D /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				2D87F4C618BDB66D0059932D /* ECDynamicTransition.h */,
+				2D87F4C718BDB66D0059932D /* ECDynamicTransition.m */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
 		2DD15D0518B31ED5003B04E3 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +199,8 @@
 				2DCE400118B32574009A6D72 /* ECDeckViewController.m */,
 				2DEBF78218B33D0F0020B170 /* ECBigCardViewController.h */,
 				2DEBF78318B33D0F0020B170 /* ECBigCardViewController.m */,
+				2D9D8AD718BC768D00E724E1 /* ECMenuViewController.h */,
+				2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */,
 			);
 			name = "View Controllers";
 			path = ViewControllers;
@@ -205,9 +229,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D71A2F918AE6052006D161B /* Build configuration list for PBXNativeTarget "Estimate Cards" */;
 			buildPhases = (
+				61B2F72137D147DCAED8E7C1 /* Check Pods Manifest.lock */,
 				2D71A2C918AE6052006D161B /* Sources */,
 				2D71A2CA18AE6052006D161B /* Frameworks */,
 				2D71A2CB18AE6052006D161B /* Resources */,
+				92808F3E133E477DAA7FE25B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -294,12 +320,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		61B2F72137D147DCAED8E7C1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		92808F3E133E477DAA7FE25B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2D71A2C918AE6052006D161B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2D71A2E118AE6052006D161B /* ECAppDelegate.m in Sources */,
+				2D87F4C818BDB66D0059932D /* ECDynamicTransition.m in Sources */,
+				2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */,
 				2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */,
 				2DEBF78418B33D0F0020B170 /* ECBigCardViewController.m in Sources */,
 				2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */,
@@ -419,6 +480,7 @@
 		};
 		2D71A2FA18AE6052006D161B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9337EEC73AA434E90171635 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -435,6 +497,7 @@
 		};
 		2D71A2FB18AE6052006D161B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9337EEC73AA434E90171635 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
