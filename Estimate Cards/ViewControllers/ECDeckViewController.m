@@ -65,11 +65,12 @@
 -(void)showBigCardViewForItemAtIndexPath:(NSIndexPath*)indexPath {
     
     //TODO: maybe use startInteractiveTransitionToCollectionViewLayout:completion?
+    __weak typeof(self)weakSelf = self;
     [self.collectionView setCollectionViewLayout:[[ECBigCardLayout alloc] init] animated:YES completion:^(BOOL finished) {
         NSLog(@"Finished animating to big card view");
+        [weakSelf.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     }];
     
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource

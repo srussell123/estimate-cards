@@ -8,8 +8,6 @@
 
 #import "ECMenuViewController.h"
 
-#import "ECMenuViewDelegate.h"
-
 NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 @interface ECMenuViewController ()
