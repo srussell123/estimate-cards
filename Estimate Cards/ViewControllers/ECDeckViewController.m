@@ -25,7 +25,6 @@
 @property (nonatomic, strong) ECDynamicTransition *transition;
 @property (nonatomic, strong) NSArray *cards;
 @property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
-@property (nonatomic, strong) id<UICollectionViewDelegateFlowLayout> layoutDelegate;
 @end
 
 @implementation ECDeckViewController
@@ -54,8 +53,6 @@
     UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
     
-    self.layoutDelegate = [[ECDeckViewDelegate alloc] init];
-    
     self.cards = @[@"2", @"4", @"8", @"??"];
 }
 
@@ -68,10 +65,7 @@
 -(void)showBigCardViewForItemAtIndexPath:(NSIndexPath*)indexPath {
     
     //TODO: use startInteractiveTransitionToCollectionViewLayout:completion
-    self.layoutDelegate = [[ECBigCardViewDelegate alloc] init];
-    
-    [self.collectionView reloadData];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    NSLog(@"Show the card here");
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -98,17 +92,6 @@
     
     [self showBigCardViewForItemAtIndexPath:indexPath];
 }
-
-#pragma mark - UICollectionViewDelegateFlowLayout
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
-}
-
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
-}
-
-
 
 #pragma mark - Motion Detection
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
