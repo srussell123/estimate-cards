@@ -15,7 +15,6 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 @interface ECMenuViewController ()
 
 @property (nonatomic, strong) NSDictionary *decks;
-@property (nonatomic, strong) id<UICollectionViewDelegateFlowLayout> layoutDelegate;
 
 @end
 
@@ -34,7 +33,6 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 {
     [super viewDidLoad];
     
-    self.layoutDelegate = [[ECMenuViewDelegate alloc] init];
     
     self.decks = @{
                    @"Squared": @[@"2", @"4", @"8", @"16"],
@@ -88,15 +86,6 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *deck = [self.decks allKeys][indexPath.section];
     NSLog(@"User tapped deck %@", deck);
-}
-
-#pragma mark - UICollectionViewDelegateFlowLayout
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
-}
-
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
 }
 
 @end
