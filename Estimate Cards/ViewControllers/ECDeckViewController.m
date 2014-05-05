@@ -11,7 +11,10 @@
 
 //View Controllers
 #import "ECDeckViewController.h"
-#import "ECBigCardViewController.h"
+
+//Layouts
+#import "ECDeckViewDelegate.h"
+#import "ECBigCardViewDelegate.h"
 
 //Menu and Transitions
 #import "UIViewController+ECSlidingViewController.h"
@@ -22,6 +25,7 @@
 @property (nonatomic, strong) ECDynamicTransition *transition;
 @property (nonatomic, strong) NSArray *cards;
 @property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
+@property (nonatomic, strong) id<UICollectionViewDelegateFlowLayout> layoutDelegate;
 @end
 
 @implementation ECDeckViewController
@@ -50,6 +54,8 @@
     UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
     
+    self.layoutDelegate = [[ECDeckViewDelegate alloc] init];
+    
     self.cards = @[@"2", @"4", @"8", @"??"];
 }
 
@@ -60,12 +66,12 @@
 }
 
 -(void)showBigCardViewForItemAtIndexPath:(NSIndexPath*)indexPath {
-    ECBigCardViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BigCardViewController"];
     
-    vc.cards = self.cards;
-    vc.pathToView = indexPath;
+    //TODO: use startInteractiveTransitionToCollectionViewLayout:completion
+    self.layoutDelegate = [[ECBigCardViewDelegate alloc] init];
     
-    [self presentViewController:vc animated:YES completion:nil];
+    [self.collectionView reloadData];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -95,12 +101,14 @@
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(150, 266.5);
+    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(5.0, 5.0, 1.0, 5.0);
+    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
 }
+
+
 
 #pragma mark - Motion Detection
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{

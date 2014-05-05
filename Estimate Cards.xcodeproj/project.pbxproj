@@ -21,11 +21,12 @@
 		2D71A2F618AE6052006D161B /* Estimate_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A2F518AE6052006D161B /* Estimate_CardsTests.m */; };
 		2D87F4C818BDB66D0059932D /* ECDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D87F4C718BDB66D0059932D /* ECDynamicTransition.m */; };
 		2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */; };
+		2DACA47419175265007482AE /* ECDeckViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47319175265007482AE /* ECDeckViewDelegate.m */; };
+		2DACA47719175306007482AE /* ECBigCardViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47619175306007482AE /* ECBigCardViewDelegate.m */; };
 		2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400118B32574009A6D72 /* ECDeckViewController.m */; };
 		2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400618B32A8F009A6D72 /* ECCardCell.m */; };
 		2DCE400918B32AB9009A6D72 /* ECCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCE400818B32AB9009A6D72 /* ECCardCell.xib */; };
 		2DD15D0A18B31F55003B04E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD15D0918B31F55003B04E3 /* Main.storyboard */; };
-		2DEBF78418B33D0F0020B170 /* ECBigCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEBF78318B33D0F0020B170 /* ECBigCardViewController.m */; };
 		A4A7B30E20D74A108AC03E11 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CBCAD333C046DF9B888E74 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -60,14 +61,16 @@
 		2D87F4C718BDB66D0059932D /* ECDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDynamicTransition.m; sourceTree = "<group>"; };
 		2D9D8AD718BC768D00E724E1 /* ECMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMenuViewController.h; sourceTree = "<group>"; };
 		2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMenuViewController.m; sourceTree = "<group>"; };
+		2DACA47219175265007482AE /* ECDeckViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDeckViewDelegate.h; sourceTree = "<group>"; };
+		2DACA47319175265007482AE /* ECDeckViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckViewDelegate.m; sourceTree = "<group>"; };
+		2DACA47519175306007482AE /* ECBigCardViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECBigCardViewDelegate.h; sourceTree = "<group>"; };
+		2DACA47619175306007482AE /* ECBigCardViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBigCardViewDelegate.m; sourceTree = "<group>"; };
 		2DCE400018B32574009A6D72 /* ECDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDeckViewController.h; sourceTree = "<group>"; };
 		2DCE400118B32574009A6D72 /* ECDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckViewController.m; sourceTree = "<group>"; };
 		2DCE400518B32A8F009A6D72 /* ECCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCardCell.h; sourceTree = "<group>"; };
 		2DCE400618B32A8F009A6D72 /* ECCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCardCell.m; sourceTree = "<group>"; };
 		2DCE400818B32AB9009A6D72 /* ECCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ECCardCell.xib; sourceTree = "<group>"; };
 		2DD15D0918B31F55003B04E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		2DEBF78218B33D0F0020B170 /* ECBigCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECBigCardViewController.h; sourceTree = "<group>"; };
-		2DEBF78318B33D0F0020B170 /* ECBigCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBigCardViewController.m; sourceTree = "<group>"; };
 		C1CBCAD333C046DF9B888E74 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9337EEC73AA434E90171635 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +135,7 @@
 		2D71A2D618AE6052006D161B /* Estimate Cards */ = {
 			isa = PBXGroup;
 			children = (
+				2DACA471191751A8007482AE /* Delegates */,
 				2D87F4C518BDB6450059932D /* Transitions */,
 				2DD15D0818B31F2F003B04E3 /* Categories */,
 				2DD15D0718B31EE1003B04E3 /* Views */,
@@ -183,6 +187,17 @@
 			path = Transitions;
 			sourceTree = "<group>";
 		};
+		2DACA471191751A8007482AE /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2DACA47219175265007482AE /* ECDeckViewDelegate.h */,
+				2DACA47319175265007482AE /* ECDeckViewDelegate.m */,
+				2DACA47519175306007482AE /* ECBigCardViewDelegate.h */,
+				2DACA47619175306007482AE /* ECBigCardViewDelegate.m */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		2DD15D0518B31ED5003B04E3 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,8 +212,6 @@
 			children = (
 				2DCE400018B32574009A6D72 /* ECDeckViewController.h */,
 				2DCE400118B32574009A6D72 /* ECDeckViewController.m */,
-				2DEBF78218B33D0F0020B170 /* ECBigCardViewController.h */,
-				2DEBF78318B33D0F0020B170 /* ECBigCardViewController.m */,
 				2D9D8AD718BC768D00E724E1 /* ECMenuViewController.h */,
 				2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */,
 			);
@@ -361,8 +374,9 @@
 				2D71A2E118AE6052006D161B /* ECAppDelegate.m in Sources */,
 				2D87F4C818BDB66D0059932D /* ECDynamicTransition.m in Sources */,
 				2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */,
+				2DACA47719175306007482AE /* ECBigCardViewDelegate.m in Sources */,
 				2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */,
-				2DEBF78418B33D0F0020B170 /* ECBigCardViewController.m in Sources */,
+				2DACA47419175265007482AE /* ECDeckViewDelegate.m in Sources */,
 				2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */,
 				2D71A2DD18AE6052006D161B /* main.m in Sources */,
 			);
