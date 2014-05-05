@@ -13,8 +13,8 @@
 #import "ECDeckViewController.h"
 
 //Layouts
-#import "ECDeckViewDelegate.h"
-#import "ECBigCardViewDelegate.h"
+#import "ECDeckLayout.h"
+#import "ECBigCardLayout.h"
 
 //Menu and Transitions
 #import "UIViewController+ECSlidingViewController.h"
@@ -64,8 +64,12 @@
 
 -(void)showBigCardViewForItemAtIndexPath:(NSIndexPath*)indexPath {
     
-    //TODO: use startInteractiveTransitionToCollectionViewLayout:completion
-    NSLog(@"Show the card here");
+    //TODO: maybe use startInteractiveTransitionToCollectionViewLayout:completion?
+    [self.collectionView setCollectionViewLayout:[[ECBigCardLayout alloc] init] animated:YES completion:^(BOOL finished) {
+        NSLog(@"Finished animating to big card view");
+    }];
+    
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource

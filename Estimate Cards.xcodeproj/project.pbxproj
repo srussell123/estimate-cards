@@ -25,6 +25,7 @@
 		2DACA47719175306007482AE /* ECBigCardViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47619175306007482AE /* ECBigCardViewDelegate.m */; };
 		2DACA47A19175688007482AE /* ECMenuViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47919175688007482AE /* ECMenuViewDelegate.m */; };
 		2DACA47E191757F7007482AE /* ECDeckLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47D191757F7007482AE /* ECDeckLayout.m */; };
+		2DACA4811917597E007482AE /* ECBigCardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA4801917597E007482AE /* ECBigCardLayout.m */; };
 		2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400118B32574009A6D72 /* ECDeckViewController.m */; };
 		2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400618B32A8F009A6D72 /* ECCardCell.m */; };
 		2DCE400918B32AB9009A6D72 /* ECCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCE400818B32AB9009A6D72 /* ECCardCell.xib */; };
@@ -71,6 +72,8 @@
 		2DACA47919175688007482AE /* ECMenuViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMenuViewDelegate.m; sourceTree = "<group>"; };
 		2DACA47C191757F7007482AE /* ECDeckLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDeckLayout.h; sourceTree = "<group>"; };
 		2DACA47D191757F7007482AE /* ECDeckLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckLayout.m; sourceTree = "<group>"; };
+		2DACA47F1917597E007482AE /* ECBigCardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECBigCardLayout.h; sourceTree = "<group>"; };
+		2DACA4801917597E007482AE /* ECBigCardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBigCardLayout.m; sourceTree = "<group>"; };
 		2DCE400018B32574009A6D72 /* ECDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDeckViewController.h; sourceTree = "<group>"; };
 		2DCE400118B32574009A6D72 /* ECDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckViewController.m; sourceTree = "<group>"; };
 		2DCE400518B32A8F009A6D72 /* ECCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCardCell.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 			children = (
 				2DACA47C191757F7007482AE /* ECDeckLayout.h */,
 				2DACA47D191757F7007482AE /* ECDeckLayout.m */,
+				2DACA47F1917597E007482AE /* ECBigCardLayout.h */,
+				2DACA4801917597E007482AE /* ECBigCardLayout.m */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				2DACA47419175265007482AE /* ECDeckViewDelegate.m in Sources */,
 				2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */,
 				2D71A2DD18AE6052006D161B /* main.m in Sources */,
+				2DACA4811917597E007482AE /* ECBigCardLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
