@@ -23,6 +23,7 @@
 		2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */; };
 		2DACA47419175265007482AE /* ECDeckViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47319175265007482AE /* ECDeckViewDelegate.m */; };
 		2DACA47719175306007482AE /* ECBigCardViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47619175306007482AE /* ECBigCardViewDelegate.m */; };
+		2DACA47A19175688007482AE /* ECMenuViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47919175688007482AE /* ECMenuViewDelegate.m */; };
 		2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400118B32574009A6D72 /* ECDeckViewController.m */; };
 		2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400618B32A8F009A6D72 /* ECCardCell.m */; };
 		2DCE400918B32AB9009A6D72 /* ECCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCE400818B32AB9009A6D72 /* ECCardCell.xib */; };
@@ -65,6 +66,8 @@
 		2DACA47319175265007482AE /* ECDeckViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckViewDelegate.m; sourceTree = "<group>"; };
 		2DACA47519175306007482AE /* ECBigCardViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECBigCardViewDelegate.h; sourceTree = "<group>"; };
 		2DACA47619175306007482AE /* ECBigCardViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBigCardViewDelegate.m; sourceTree = "<group>"; };
+		2DACA47819175688007482AE /* ECMenuViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMenuViewDelegate.h; sourceTree = "<group>"; };
+		2DACA47919175688007482AE /* ECMenuViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMenuViewDelegate.m; sourceTree = "<group>"; };
 		2DCE400018B32574009A6D72 /* ECDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDeckViewController.h; sourceTree = "<group>"; };
 		2DCE400118B32574009A6D72 /* ECDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDeckViewController.m; sourceTree = "<group>"; };
 		2DCE400518B32A8F009A6D72 /* ECCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCardCell.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				2DACA47319175265007482AE /* ECDeckViewDelegate.m */,
 				2DACA47519175306007482AE /* ECBigCardViewDelegate.h */,
 				2DACA47619175306007482AE /* ECBigCardViewDelegate.m */,
+				2DACA47819175688007482AE /* ECMenuViewDelegate.h */,
+				2DACA47919175688007482AE /* ECMenuViewDelegate.m */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				2D87F4C818BDB66D0059932D /* ECDynamicTransition.m in Sources */,
 				2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */,
 				2DACA47719175306007482AE /* ECBigCardViewDelegate.m in Sources */,
+				2DACA47A19175688007482AE /* ECMenuViewDelegate.m in Sources */,
 				2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */,
 				2DACA47419175265007482AE /* ECDeckViewDelegate.m in Sources */,
 				2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */,

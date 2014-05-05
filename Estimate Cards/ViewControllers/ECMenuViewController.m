@@ -8,11 +8,14 @@
 
 #import "ECMenuViewController.h"
 
-NSString *const kECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
+#import "ECMenuViewDelegate.h"
+
+NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 @interface ECMenuViewController ()
 
 @property (nonatomic, strong) NSDictionary *decks;
+@property (nonatomic, strong) id<UICollectionViewDelegateFlowLayout> layoutDelegate;
 
 @end
 
@@ -31,6 +34,8 @@ NSString *const kECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 {
     [super viewDidLoad];
     
+    self.layoutDelegate = [[ECMenuViewDelegate alloc] init];
+    
     self.decks = @{
                    @"Squared": @[@"2", @"4", @"8", @"16"],
                    @"Squared Question Mark": @[@"2", @"4", @"8", @"??"],
@@ -38,7 +43,7 @@ NSString *const kECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
                    @"Shirt Size": @[@"S", @"M", @"L", @"XL"]
                    };
     
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kECDeckSelectorCellReuseId];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ECDeckSelectorCellReuseId];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,7 +73,7 @@ NSString *const kECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kECDeckSelectorCellReuseId forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ECDeckSelectorCellReuseId forIndexPath:indexPath];
     
     UILabel *label = [[UILabel alloc] initWithFrame:cell.frame];
     label.text = [self deckValueForIndexPath:indexPath];
@@ -87,11 +92,11 @@ NSString *const kECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(20, 20);
+    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0);
+    return [self.layoutDelegate collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
 }
 
 @end
