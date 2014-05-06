@@ -25,6 +25,8 @@
 @property (nonatomic, strong) ECDynamicTransition *transition;
 @property (nonatomic, strong) NSArray *cards;
 @property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
+@property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture;
+@property (nonatomic, strong) UICollectionViewTransitionLayout *transitionLayout;
 @end
 
 @implementation ECDeckViewController
@@ -53,6 +55,8 @@
     UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
     
+    self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+    
     self.cards = @[@"2", @"4", @"8", @"??"];
 }
 
@@ -67,10 +71,11 @@
     //TODO: maybe use startInteractiveTransitionToCollectionViewLayout:completion?
     __weak typeof(self)weakSelf = self;
     [self.collectionView setCollectionViewLayout:[[ECBigCardLayout alloc] init] animated:YES completion:^(BOOL finished) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
         NSLog(@"Finished animating to big card view");
-        [weakSelf.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        [strongSelf.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        [strongSelf.view addGestureRecognizer:strongSelf.pinchGesture];
     }];
-    
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -89,6 +94,34 @@
     [cell setDisplayValue:self.cards[indexPath.item]];
     
     return cell;
+}
+
+#pragma mark - Gesture Handling
+- (void)handlePinchGesture:(UIPinchGestureRecognizer*)recognizer {
+    
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            self.transitionLayout = [self.collectionView startInteractiveTransitionToCollectionViewLayout:[[ECDeckLayout alloc] init] completion:^(BOOL completed, BOOL finish) {
+                NSLog(@"Completed transition animation");
+            }];
+            break;
+            
+        case UIGestureRecognizerStateCancelled:
+            [self.collectionView cancelInteractiveTransition];
+            break;
+            
+        case UIGestureRecognizerStateChanged:
+            self.transitionLayout.transitionProgress = 100.0 - recognizer.scale;
+            
+        default:
+            NSLog(@"Unknown recognizer state");
+            break;
+    }
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+
+    } else if (recognizer.state == UIGestureRecognizerStateCancelled) {
+        [self.collectionView cancelInteractiveTransition];
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
