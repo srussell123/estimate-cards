@@ -7,11 +7,16 @@
 //
 
 #import "ECAppDelegate.h"
+#import "ECDeckController.h"
 
 @implementation ECAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    ECDeckController *deckController = [[ECDeckController alloc] init];
+    
+    if ([deckController availableDecks].count == 0) {
+        [deckController installStarterDecks];
+    }
     return YES;
 }
 
