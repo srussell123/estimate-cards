@@ -10,4 +10,6 @@
 
 @interface ECDeckViewController : UICollectionViewController
 
+@property (nonatomic, copy) NSString *selectedDeck;
+
 @end

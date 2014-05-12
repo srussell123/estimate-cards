@@ -20,29 +20,20 @@
 #import "UIViewController+ECSlidingViewController.h"
 #import "ECDynamicTransition.h"
 
+//Data Controllers
+#import "ECDeckController.h"
+
 @interface ECDeckViewController ()
 
 @property (nonatomic, strong) ECDynamicTransition *transition;
-@property (nonatomic, strong) NSArray *cards;
+@property (nonatomic, strong) ECDeckController *deckController;
 @property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
+@property (nonatomic, strong) NSDictionary *deckInfo;
 @end
 
 @implementation ECDeckViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    //configure the transition for swipe menu
+- (void)configureTransition {
     self.transition = [[ECDynamicTransition alloc] init];
     self.transition.slidingViewController = self.slidingViewController;
     self.slidingViewController.delegate = self.transition;
@@ -50,14 +41,26 @@
     self.slidingViewController.customAnchoredGestures = @[self.dynamicTransitionPanGesture];
     [self.view addGestureRecognizer:self.dynamicTransitionPanGesture];
     
-    UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
-    
-    self.cards = @[@"2", @"4", @"8", @"??"];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)configureTableView {
+    UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];   
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self configureTransition];
+    [self configureTableView];
+    
+    self.deckController = [[ECDeckController alloc] init];
+    //TODO: make this not hard coded
+    self.selectedDeck = @"Fibonacci";
+    self.deckInfo = [self.deckController deckNamed:self.selectedDeck];
+}
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -67,10 +70,15 @@
     //TODO: maybe use startInteractiveTransitionToCollectionViewLayout:completion?
     __weak typeof(self)weakSelf = self;
     [self.collectionView setCollectionViewLayout:[[ECBigCardLayout alloc] init] animated:YES completion:^(BOOL finished) {
-        NSLog(@"Finished animating to big card view");
+        NSLog(@"DECK VIEW CONTROLLER>>INFO>>Finished animating to Big Card view");
         [weakSelf.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     }];
     
+}
+
+- (void)setSelectedDeck:(NSString *)selectedDeck {
+    _selectedDeck = selectedDeck;
+    self.deckInfo = [self.deckController deckNamed:self.selectedDeck];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -79,29 +87,28 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.cards.count;
+    return [self.deckInfo[@"values"] count];
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     ECCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[ECCardCell cellReuseId] forIndexPath:indexPath];
     
-    [cell setDisplayValue:self.cards[indexPath.item]];
+    NSString *displayValue = self.deckInfo[@"values"][indexPath.item];
+    [cell setDisplayValue:displayValue];
     
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"User tapped card %@", self.cards[indexPath.item]);
-    
     [self showBigCardViewForItemAtIndexPath:indexPath];
 }
 
 #pragma mark - Motion Detection
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (motion == UIEventSubtypeMotionShake) {
-        NSUInteger randomIndex = arc4random_uniform(self.cards.count);
+        NSUInteger randomIndex = arc4random_uniform([self.deckInfo[@"values"] count]);
         NSIndexPath *path = [NSIndexPath indexPathForItem:randomIndex inSection:0];
         
         [self showBigCardViewForItemAtIndexPath:path];
