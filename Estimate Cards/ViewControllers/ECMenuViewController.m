@@ -20,8 +20,7 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 @implementation ECMenuViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.deckController = [[ECDeckController alloc] init];
