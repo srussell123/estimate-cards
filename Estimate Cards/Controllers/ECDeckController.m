@@ -38,8 +38,7 @@ NSString *const ECDeckFolder =  @"net.shadyproject.EstimateCards.Decks";
     __weak typeof(self)weakSelf = self;
     [startDecks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        [fileManager copyItemAtPath:obj toPath:[strongSelf storagePath] error:&error];
+        [strongSelf.fileManager copyItemAtPath:obj toPath:[strongSelf storagePath] error:&error];
         
         if (error) {
             NSLog(@"DECK CONTROLLER>>ERROR>>Could not copy starter deck from bundle: %@", error);
@@ -48,6 +47,38 @@ NSString *const ECDeckFolder =  @"net.shadyproject.EstimateCards.Decks";
 }
 
 - (NSArray*)availableDecks {
+    NSMutableArray *decks = [NSMutableArray array];
+    NSError *error = nil;
+    NSData *data = nil;
     
+    for (NSString *file in [self.fileManager enumeratorAtPath:[self storagePath]]) {
+        if ([@"json" isEqualToString:[file lastPathComponent]]) {
+            data = [NSData dataWithContentsOfFile:file];
+            NSDictionary *deckInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+            
+            if (!error) {
+                [decks addObject:deckInfo[@"name"]];
+            } else {
+                NSLog(@"DECK CONTROLLER>>ERROR>>Could not parse json from file: %@", file);
+                continue;
+            }
+        }
+    }
+    
+    return decks;
+}
+
+- (NSDictionary*)deckNamed:(NSString *)name {
+    NSString *path = [[self storagePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", name]];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *error = nil;
+    NSDictionary *deck = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    
+    if (error) {
+        NSLog(@"DECK CONTROLLER>>ERROR>>Could not parse deck from file: %@", path);
+        return nil;
+    }
+    
+    return deck;
 }
 @end
