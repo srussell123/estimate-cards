@@ -7,37 +7,25 @@
 //
 
 #import "ECMenuViewController.h"
+#import "ECDeckController.h"
 
 NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 @interface ECMenuViewController ()
 
-@property (nonatomic, strong) NSDictionary *decks;
+@property (nonatomic, strong) ECDeckController *deckController;
+@property (nonatomic, strong) NSArray *deckNames;
 
 @end
 
 @implementation ECMenuViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
-    self.decks = @{
-                   @"Squared": @[@"2", @"4", @"8", @"16"],
-                   @"Squared Question Mark": @[@"2", @"4", @"8", @"??"],
-                   @"Fiboniacci": @[@"1", @"2", @"3", @"5"],
-                   @"Shirt Size": @[@"S", @"M", @"L", @"XL"]
-                   };
+    self.deckController = [[ECDeckController alloc] init];
+    self.deckNames = [self.deckController availableDecks];
     
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ECDeckSelectorCellReuseId];
 }
@@ -48,23 +36,23 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
     // Dispose of any resources that can be recreated.
 }
 
--(NSString*)deckValueForIndexPath:(NSIndexPath*)indexPath{
-    NSString *key = [self.decks allKeys][indexPath.section];
-    NSString *value = self.decks[key][indexPath.item];
+- (NSDictionary *)deckForIndexPath:(NSIndexPath*)indexPath {
     
-    return value;
+    NSString *name = self.deckNames[indexPath.section];
+    NSDictionary *deck = [self.deckController deckNamed:name];
+    
+    return deck;
 }
 
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return [self.decks allKeys].count;
+    return self.deckNames.count;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    NSString *key = [self.decks allKeys][section];
-    NSArray *cards = self.decks[key];
+    NSDictionary *deck = [self deckForIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
     
-    return cards.count;
+    return [deck[@"values"] count];
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -72,7 +60,8 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ECDeckSelectorCellReuseId forIndexPath:indexPath];
     
     UILabel *label = [[UILabel alloc] initWithFrame:cell.frame];
-    label.text = [self deckValueForIndexPath:indexPath];
+    NSDictionary *deck = [self deckForIndexPath:indexPath];
+    label.text = [deck[@"values"] objectAtIndex:indexPath.row];
     label.textAlignment = NSTextAlignmentCenter;
     
     [cell.contentView addSubview:label];
@@ -82,8 +71,8 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *deck = [self.decks allKeys][indexPath.section];
-    NSLog(@"User tapped deck %@", deck);
+    NSString *name = self.deckNames[indexPath.section];
+    NSLog(@"User tapped deck %@", name);
 }
 
 @end
