@@ -8,6 +8,8 @@
 
 #import "ECMenuViewController.h"
 #import "ECDeckController.h"
+#import "ECSlidingViewController.h"
+#import "ECDeckViewController.h"
 
 NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
@@ -72,6 +74,11 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *name = self.deckNames[indexPath.section];
     NSLog(@"User tapped deck %@", name);
+    
+    //TODO: figure out a better way to do this, maybe?
+    ECSlidingViewController *parent = (ECSlidingViewController*)self.parentViewController;
+    ECDeckViewController *deckVC = (ECDeckViewController*)parent.topViewController;
+    deckVC.selectedDeck = name;
 }
 
 @end

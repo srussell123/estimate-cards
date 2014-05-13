@@ -79,6 +79,7 @@
 - (void)setSelectedDeck:(NSString *)selectedDeck {
     _selectedDeck = selectedDeck;
     self.deckInfo = [self.deckController deckNamed:self.selectedDeck];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
