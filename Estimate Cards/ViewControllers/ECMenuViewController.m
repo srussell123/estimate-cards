@@ -46,14 +46,9 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 }
 
 #pragma mark - UICollectionViewDataSource
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return self.deckNames.count;
-}
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    NSDictionary *deck = [self deckForIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
-    
-    return [deck[@"values"] count];
+    return self.deckNames.count;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -61,24 +56,32 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ECDeckSelectorCellReuseId forIndexPath:indexPath];
     
     UILabel *label = [[UILabel alloc] initWithFrame:cell.frame];
-    NSDictionary *deck = [self deckForIndexPath:indexPath];
-    label.text = [deck[@"values"] objectAtIndex:indexPath.row];
+    label.text = self.deckNames[indexPath.row];
     label.textAlignment = NSTextAlignmentCenter;
     
     [cell.contentView addSubview:label];
+    
+    cell.layer.borderColor = [[UIColor redColor] CGColor];
+    cell.layer.borderWidth = 1.0;
     
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *name = self.deckNames[indexPath.section];
+    NSString *name = self.deckNames[indexPath.row];
     NSLog(@"User tapped deck %@", name);
     
     //TODO: figure out a better way to do this, maybe?
     ECSlidingViewController *parent = (ECSlidingViewController*)self.parentViewController;
     ECDeckViewController *deckVC = (ECDeckViewController*)parent.topViewController;
     deckVC.selectedDeck = name;
+}
+
+#pragma mark - UICollectionViewDelegateFLowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.view.frame.size.width, 20); //TODO: measure this text with a font and use that instead
 }
 
 @end
