@@ -9,50 +9,68 @@
 #import "ECMenuViewController.h"
 #import "ECDeckController.h"
 
+NSString *const ECMenuViewControllerStoryboardId = @"MenuViewController";
 NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 
 @interface ECMenuViewController ()
 
 @property (nonatomic, strong) ECDeckController *deckController;
-@property (nonatomic, strong) NSArray *deckNames;
 
 @end
 
 @implementation ECMenuViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.deckController = [[ECDeckController alloc] init];
-    self.deckNames = [self.deckController availableDecks];
     
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ECDeckSelectorCellReuseId];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ECDeckSelectorCellReuseId];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (NSDictionary *)deckForIndexPath:(NSIndexPath*)indexPath {
     
-    NSString *name = self.deckNames[indexPath.section];
+    NSString *name = [self.deckController availableDecks][indexPath.row];
     NSDictionary *deck = [self.deckController deckNamed:name];
     
     return deck;
 }
 
-#pragma mark - UICollectionViewDataSource
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return self.deckNames.count;
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.deckController availableDecks].count;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    NSDictionary *deck = [self deckForIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return [deck[@"values"] count];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ECDeckSelectorCellReuseId forIndexPath:indexPath];
+    NSDictionary *deck = [self deckForIndexPath:indexPath];
+    
+    cell.textLabel.text = deck[@"name"];
+    
+    __block NSMutableString *values = [NSMutableString stringWithString:@""];
+    [deck[@"values"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [values appendFormat:@"%@ ", obj];
+    }];
+    
+    cell.detailTextLabel.text = values;
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *name = [self.deckController availableDecks][indexPath.row];
+    NSLog(@"Picked %@", name);
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,11 +86,4 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
     
     return cell;
 }
-
-#pragma mark - UICollectionViewDelegate
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *name = self.deckNames[indexPath.section];
-    NSLog(@"User tapped deck %@", name);
-}
-
 @end

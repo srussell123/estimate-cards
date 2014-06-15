@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ECMenuViewController : UICollectionViewController
+extern NSString *const ECMenuViewControllerStoryboardId;
+
+@interface ECMenuViewController : UITableViewController
 
 @end
