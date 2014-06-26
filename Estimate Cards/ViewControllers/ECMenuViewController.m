@@ -8,6 +8,7 @@
 
 #import "ECMenuViewController.h"
 #import "ECDeckController.h"
+#import "ECMenuCell.h"
 
 NSString *const ECMenuViewControllerStoryboardId = @"MenuViewController";
 NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
@@ -25,7 +26,7 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
     
     self.deckController = [[ECDeckController alloc] init];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ECDeckSelectorCellReuseId];
+    [self.tableView registerClass:[ECMenuCell class] forCellReuseIdentifier:ECDeckSelectorCellReuseId];
 }
 
 - (void)didReceiveMemoryWarning {
