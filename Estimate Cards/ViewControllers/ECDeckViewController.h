@@ -10,4 +10,6 @@
 
 @interface ECDeckViewController : UICollectionViewController
 
+- (void)displayDeckNamed:(NSString*)deckName;
+
 @end

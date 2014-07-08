@@ -9,6 +9,8 @@
 #import "ECMenuViewController.h"
 #import "ECDeckController.h"
 #import "ECMenuCell.h"
+#import "ECSlidingViewController.h"
+#import "ECDeckViewController.h"
 
 NSString *const ECMenuViewControllerStoryboardId = @"MenuViewController";
 NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
@@ -72,6 +74,11 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *name = [self.deckController availableDecks][indexPath.row];
     NSLog(@"Picked %@", name);
+    
+    ECSlidingViewController *parent = (ECSlidingViewController*)self.parentViewController;
+    ECDeckViewController *deckVc = (ECDeckViewController*)parent.topViewController;
+    
+    [deckVc displayDeckNamed:name];
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
