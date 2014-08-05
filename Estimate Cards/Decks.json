@@ -1,0 +1,20 @@
+{
+    "decks":{
+        "Fibonacci":{
+            "values": ["1", "2", "3", "5"],
+            "background": ""
+        },
+        "Squared":{
+            "values": ["2", "4", "8", "16"],
+            "background": ""
+        },
+        "SquareQuestionMark":{
+            "values": ["2", "4", "8", "??"],
+            "background": ""
+        },
+        "ShirtSize": {
+            "values": ["S", "M", "L", "XL"],
+            "background": ""
+        }
+    }
+}
