@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 shadyproject. All rights reserved.
 //
 
+//Data
+#import "ECDeckController.h"
+
 //Cells and Xibs
 #import "ECCardCell.h"
 
@@ -23,8 +26,9 @@
 @interface ECDeckViewController ()
 
 @property (nonatomic, strong) ECDynamicTransition *transition;
-@property (nonatomic, strong) NSArray *cards;
+@property (nonatomic, strong) ECDeckController *deckController;
 @property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
+@property (nonatomic, strong) NSString *currentDeckName;
 @end
 
 @implementation ECDeckViewController
@@ -33,31 +37,34 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
-    //configure the transition for swipe menu
+    [self configureSwipeMenu];
+    
+    self.deckController = [[ECDeckController alloc] init];
+     //TODO: save the last displayed deck in user defaults
+    NSString *deck = [[self.deckController availableDecks] firstObject];
+    self.currentDeckName = deck;
+    
+    UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
+}
+
+- (void)configureSwipeMenu {
     self.transition = [[ECDynamicTransition alloc] init];
     self.transition.slidingViewController = self.slidingViewController;
     self.slidingViewController.delegate = self.transition;
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGestureCustom;
     self.slidingViewController.customAnchoredGestures = @[self.dynamicTransitionPanGesture];
     [self.view addGestureRecognizer:self.dynamicTransitionPanGesture];
-    
-    UINib *nib = [UINib nibWithNibName:@"ECCardCell" bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:[ECCardCell cellReuseId]];
-    
-    self.cards = @[@"2", @"4", @"8", @"??"];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -79,21 +86,22 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.cards.count;
+    NSDictionary *deck = [self.deckController deckNamed:self.currentDeckName];
+    return [deck[@"values"] count];
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     ECCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[ECCardCell cellReuseId] forIndexPath:indexPath];
     
-    [cell setDisplayValue:self.cards[indexPath.item]];
+    [cell setDisplayValue:[self.deckController deckNamed:self.currentDeckName][@"values"][indexPath.item]];
     
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"User tapped card %@", self.cards[indexPath.item]);
+    NSLog(@"User tapped card %@", [self.deckController deckNamed:self.currentDeckName][@"values"][indexPath.item]);
     
     [self showBigCardViewForItemAtIndexPath:indexPath];
 }
@@ -101,7 +109,7 @@
 #pragma mark - Motion Detection
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (motion == UIEventSubtypeMotionShake) {
-        NSUInteger randomIndex = arc4random_uniform(self.cards.count);
+        NSUInteger randomIndex = arc4random_uniform([self.deckController deckNamed:self.currentDeckName].count);
         NSIndexPath *path = [NSIndexPath indexPathForItem:randomIndex inSection:0];
         
         [self showBigCardViewForItemAtIndexPath:path];
@@ -115,5 +123,12 @@
     _dynamicTransitionPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.transition action:@selector(handlePanGesture:)];
     
     return _dynamicTransitionPanGesture;
+}
+
+#pragma mark - Public Methods
+- (void)displayDeckNamed:(NSString *)deckName {
+    self.currentDeckName = deckName;
+    
+    [self.collectionView reloadData];
 }
 @end
