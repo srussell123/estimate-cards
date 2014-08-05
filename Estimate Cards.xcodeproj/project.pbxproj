@@ -19,6 +19,7 @@
 		2D71A2EC18AE6052006D161B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D71A2D418AE6052006D161B /* UIKit.framework */; };
 		2D71A2F418AE6052006D161B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D71A2F218AE6052006D161B /* InfoPlist.strings */; };
 		2D71A2F618AE6052006D161B /* Estimate_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A2F518AE6052006D161B /* Estimate_CardsTests.m */; };
+		2D8090DB195BDCEC00346AE8 /* ECMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8090DA195BDCEC00346AE8 /* ECMenuCell.m */; };
 		2D87F4C818BDB66D0059932D /* ECDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D87F4C718BDB66D0059932D /* ECDynamicTransition.m */; };
 		2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D8AD818BC768D00E724E1 /* ECMenuViewController.m */; };
 		2DACA47E191757F7007482AE /* ECDeckLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DACA47D191757F7007482AE /* ECDeckLayout.m */; };
@@ -63,6 +64,8 @@
 		2D71A2F118AE6052006D161B /* Estimate CardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Estimate CardsTests-Info.plist"; sourceTree = "<group>"; };
 		2D71A2F318AE6052006D161B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D71A2F518AE6052006D161B /* Estimate_CardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Estimate_CardsTests.m; sourceTree = "<group>"; };
+		2D8090D9195BDCEC00346AE8 /* ECMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMenuCell.h; sourceTree = "<group>"; };
+		2D8090DA195BDCEC00346AE8 /* ECMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMenuCell.m; sourceTree = "<group>"; };
 		2D87F4C618BDB66D0059932D /* ECDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDynamicTransition.h; sourceTree = "<group>"; };
 		2D87F4C718BDB66D0059932D /* ECDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDynamicTransition.m; sourceTree = "<group>"; };
 		2D9D8AD718BC768D00E724E1 /* ECMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMenuViewController.h; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 			children = (
 				2DCE400518B32A8F009A6D72 /* ECCardCell.h */,
 				2DCE400618B32A8F009A6D72 /* ECCardCell.m */,
+				2D8090D9195BDCEC00346AE8 /* ECMenuCell.h */,
+				2D8090DA195BDCEC00346AE8 /* ECMenuCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				2D9D8AD918BC768D00E724E1 /* ECMenuViewController.m in Sources */,
 				2DACA4901919DDBE007482AE /* ECDeckController.m in Sources */,
 				2DACA48419175B37007482AE /* ECMenuLayout.m in Sources */,
+				2D8090DB195BDCEC00346AE8 /* ECMenuCell.m in Sources */,
 				2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */,
 				2DCE400218B32574009A6D72 /* ECDeckViewController.m in Sources */,
 				2D71A2DD18AE6052006D161B /* main.m in Sources */,
