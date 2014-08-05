@@ -34,6 +34,7 @@
 		2DCE400718B32A8F009A6D72 /* ECCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE400618B32A8F009A6D72 /* ECCardCell.m */; };
 		2DCE400918B32AB9009A6D72 /* ECCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCE400818B32AB9009A6D72 /* ECCardCell.xib */; };
 		2DD15D0A18B31F55003B04E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD15D0918B31F55003B04E3 /* Main.storyboard */; };
+		5E55402619914CAD001F3D45 /* Decks.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E55402519914CAD001F3D45 /* Decks.json */; };
 		A4A7B30E20D74A108AC03E11 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CBCAD333C046DF9B888E74 /* libPods.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		2DCE400618B32A8F009A6D72 /* ECCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCardCell.m; sourceTree = "<group>"; };
 		2DCE400818B32AB9009A6D72 /* ECCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ECCardCell.xib; sourceTree = "<group>"; };
 		2DD15D0918B31F55003B04E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5E55402519914CAD001F3D45 /* Decks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Decks.json; sourceTree = "<group>"; };
 		C1CBCAD333C046DF9B888E74 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9337EEC73AA434E90171635 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 				2DACA4871919DBA6007482AE /* Squared.json */,
 				2DACA4891919DBF9007482AE /* SquaredQuestionMark.json */,
 				2DACA48B1919DC0A007482AE /* ShirtSize.json */,
+				5E55402519914CAD001F3D45 /* Decks.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E55402619914CAD001F3D45 /* Decks.json in Resources */,
 				2DD15D0A18B31F55003B04E3 /* Main.storyboard in Resources */,
 				2DACA4881919DBA6007482AE /* Squared.json in Resources */,
 				2DACA4861919DB91007482AE /* Fibonacci.json in Resources */,
