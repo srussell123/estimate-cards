@@ -76,9 +76,11 @@ NSString *const ECDeckSelectorCellReuseId = @"DeckSelectorReuseId";
     NSLog(@"Picked %@", name);
     
     ECSlidingViewController *parent = (ECSlidingViewController*)self.parentViewController;
-    ECDeckViewController *deckVc = (ECDeckViewController*)parent.topViewController;
     
-    [deckVc displayDeckNamed:name];
+    [parent anchorTopViewToLeftAnimated:YES onComplete:^{
+        ECDeckViewController *deckVc = (ECDeckViewController*)parent.topViewController;
+        [deckVc displayDeckNamed:name];
+    }];
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
