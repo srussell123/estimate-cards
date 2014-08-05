@@ -64,7 +64,7 @@ NSString *const ECDeckFolder =  @"net.shadyproject.EstimateCards.Decks";
 - (void)installStarterDecks {
     [self ensureDeckDirectory];
     
-    NSString *deckFile = [[NSBundle mainBundle] pathForResource:@"Deks" ofType:@"json"];
+    NSString *deckFile = [[NSBundle mainBundle] pathForResource:@"Decks" ofType:@"json"];
     
     NSError *error = nil;
     NSString *name = [deckFile lastPathComponent];
@@ -82,19 +82,14 @@ NSString *const ECDeckFolder =  @"net.shadyproject.EstimateCards.Decks";
     NSError *error = nil;
     NSData *data = nil;
     
-    for (NSString *file in [self.fileManager enumeratorAtPath:[self storagePath]]) {
-        if ([[file lastPathComponent] hasSuffix:@".json"]) {
-            NSString *fullPath = [[self storagePath] stringByAppendingPathComponent:file];
-            data = [NSData dataWithContentsOfFile:fullPath];
-            NSDictionary *deckInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-            
-            if (!error) {
-                [decks addObject:deckInfo[@"name"]];
-            } else {
-                NSLog(@"DECK CONTROLLER>>ERROR>>Could not parse json from file: %@", file);
-                continue;
-            }
-        }
+    NSString *filePath = [[self storagePath] stringByAppendingPathComponent:@"Decks.json"];
+    data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *deckInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    if (!error) {
+        NSArray *keys = [[deckInfo objectForKey:@"decks"] allKeys];
+        [decks addObjectsFromArray: keys];
+    } else {
+          NSLog(@"DECK CONTROLLER>>ERROR>>Could not parse json from file: %@", @"Decks.json");
     }
     
     return decks;
