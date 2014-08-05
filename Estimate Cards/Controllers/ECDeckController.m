@@ -64,20 +64,17 @@ NSString *const ECDeckFolder =  @"net.shadyproject.EstimateCards.Decks";
 - (void)installStarterDecks {
     [self ensureDeckDirectory];
     
-    NSArray *startDecks = [[NSBundle mainBundle] pathsForResourcesOfType:@"json" inDirectory:nil];
+    NSString *deckFile = [[NSBundle mainBundle] pathForResource:@"Deks" ofType:@"json"];
     
-    __block NSError *error = nil;
-    __weak typeof(self)weakSelf = self;
-    [startDecks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
-        NSString *name = [obj lastPathComponent];
-        NSString *dstPath = [[strongSelf storagePath] stringByAppendingPathComponent:name];
-        [strongSelf.fileManager copyItemAtPath:obj toPath:dstPath error:&error];
-        
-        if (error) {
-            NSLog(@"DECK CONTROLLER>>ERROR>>Could not copy starter deck from bundle: %@", error);
-        }
-    }];
+    NSError *error = nil;
+    NSString *name = [deckFile lastPathComponent];
+    NSString *dtsPath = [[self storagePath] stringByAppendingPathComponent:name];
+    [self.fileManager copyItemAtPath:deckFile toPath:dtsPath error:&error];
+    
+    if (error) {
+        NSLog(@"DECK CONTROLLER>>ERROR>>Could not copy starter deck from bundle: %@", error);
+    }
+    
 }
 
 - (NSArray*)availableDecks {
