@@ -100,15 +100,20 @@ NSString *const ECDeckFolder =  @"net.shadyproject.EstimateCards.Decks";
     NSString *file = [[self storagePath] stringByAppendingPathComponent:@"Decks.json"];
     NSData *data = [NSData dataWithContentsOfFile:file];
     NSError *error = nil;
-    NSDictionary *allDecks = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    NSDictionary *masterDecks = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     if (error) {
         NSLog(@"DECK CONTROLLER>>ERROR>>Could not parse deck from file: %@", @"Decks.json");
         return nil;
     }
-    
-    NSDictionary *deck = [allDecks valueForKey:actualName];
-    for(id key in deck)
-        NSLog(@"key=%@ value=%@", key, [deck objectForKey:key]);
+    NSHashTable *allDecks = [masterDecks valueForKeyPath:@"decks"];
+    NSDictionary *deck = nil;
+    NSEnumerator *enumerator = [allDecks objectEnumerator];
+    id value;
+    while ((value = [enumerator nextObject])){
+        if ([value])
+    }
+        
+        //NSLog(@"key=%@ value=%@", key, [deck objectForKey:key]);
     
     
     
